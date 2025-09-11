@@ -6,7 +6,6 @@ Page sans token CSRF - injection directe
 
 # === IMPORTS ===
 import requests  # Pour envoyer des requêtes HTTP (GET, POST)
-import time      # Pour ajouter des délais entre les tentatives
 from bs4 import BeautifulSoup  # Pour parser le HTML et extraire des données
 
 # === CONFIGURATION ===
@@ -253,6 +252,7 @@ def main():
     if not login(session):
         print("❌ Impossible de se connecter. Arrêt du script.")
         return
+    print("=" * 60)
     
     # === ÉTAPE 3 : Tester la commande principale ===
     # On commence par 'hostname' car c'est une commande simple et révélatrice
