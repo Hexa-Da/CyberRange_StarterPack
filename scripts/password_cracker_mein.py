@@ -35,7 +35,7 @@ def get_csrf_token(session):
     try:
         # === ÉTAPE 1 : Récupérer la page de connexion ===
         # On fait une requête GET vers la page de login pour obtenir le formulaire HTML
-        response = session.get(TARGET_URL)
+        response = session.get(TARGET_URL, timeout=10)
         
         # Vérifier que la requête a réussi (code 200 = OK)
         if response.status_code == 200:
@@ -112,7 +112,7 @@ def test_login(username, password, session):
     try:
         # === ÉTAPE 4 : Envoyer la requête POST ===
         # C'est ici qu'on teste réellement la combinaison username/password
-        response = session.post(TARGET_URL, data=data, headers=headers)
+        response = session.post(TARGET_URL, data=data, headers=headers, timeout=10)
         
         # === ÉTAPE 5 : Analyser la réponse ===
         if response.status_code == 200:
