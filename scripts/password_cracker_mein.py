@@ -12,9 +12,24 @@ from bs4 import BeautifulSoup  # Pour parser le HTML et extraire des données
 # === CONFIGURATION ===
 TARGET_URL = "http://10.0.1.10:5780/website/login.php"  # URL de la page de connexion de Damn Vulnerable Web Server (DVWS)
 USERNAME = "admin"  # Nom d'utilisateur par défaut (on sait que c'est "admin")
-DELAY = 0.00001  # Délai en secondes entre chaque tentative (pour éviter la surcharge du serveur)
+DELAY = 0.01  # Délai en secondes entre chaque tentative (pour éviter la surcharge du serveur)
 ROCKYOU_FILE = "rockyou.txt"  # Fichier contenant la wordlist de mots de passe (on sit que le mdp est dans le fichier rockyou.txt)
 
+
+
+"""
+⚠️ Limitations dans un vrai cas :
+1. Délai trop court :
+❌ Détectable : Les serveurs bloquent les attaques trop rapides
+❌ Recommandé : 1-5 secondes entre tentatives
+2. Pas de gestion des blocages :
+❌ Manque : Détection des captchas
+❌ Manque : Gestion des IP bloquées
+❌ Manque : Rotation des User-Agents
+3. Pas de proxy/TOR :
+❌ Traçable : L'IP d'attaque est visible
+❌ Risqué : Pas d'anonymisation
+"""
 
 
 def get_csrf_token(session):

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Script pour tester l'injection de commandes avec pipe sur DVWS
 Page sans token CSRF - injection directe
@@ -18,6 +17,23 @@ COMMAND_INJECTION_URL = f"{BASE_URL}/vulnerabilities/exec/" # Le chemin /vulnera
 USERNAME = "admin"  # Nom d'utilisateur (trouvé par le script précédent)
 PASSWORD = "canyouletmein"  # Mot de passe (trouvé par le script précédent)
 
+
+
+"""
+⚠️ Limitations dans un vrai cas :
+1. Pas de gestion des filtres :
+❌ Manque : Détection des caractères bloqués (;, &, |, etc.)
+❌ Manque : Techniques de contournement (encodage, alternatives)
+2. Pas d'évasion de commandes :
+❌ Manque : Gestion des espaces, guillemets, caractères spéciaux
+❌ Manque : Techniques d'encodage URL/base64
+3. Pas de détection de WAF :
+❌ Manque : Détection des Web Application Firewalls
+❌ Manque : Contournement des protections
+4. Pas de persistance :
+❌ Manque : Mise en place de backdoors
+❌ Manque : Escalade de privilèges
+"""
 
 
 def get_csrf_token(session, url):
