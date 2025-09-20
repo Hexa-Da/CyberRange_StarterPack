@@ -1,0 +1,57 @@
+DVWS PENTESTING - RÉSULTATS DE LA SESSION
+==========================================
+
+Date: 9 septembre 2024
+Cible: http://10.0.1.10:5780/website/
+
+## 1. CRACK DE MOT DE PASSE
+- Utilisateur: admin
+- Mot de passe trouvé: canyouletmein
+- Méthode: Brute force avec wordlist rockyou.txt
+- Filtre appliqué: mots de passe contenant "mein"
+- Temps d'exécution: ~2 minutes
+
+## 2. INJECTION DE COMMANDES
+- URL vulnérable: /vulnerabilities/exec/
+- Technique: Pipe (|) pour chaîner les commandes
+- Commandes exécutées avec succès:
+  * whoami → www-data
+  * hostname → dvws
+  * wc -l /etc/passwd → 30 lignes
+
+## 3. DÉCOUVERTE DE FLAG
+- Fichier: /var/www/DVWS/website/index.php
+- Flag: SC01{Retour_aux_sources}
+- Localisation: Commentaire à la fin du fichier
+
+## 4. INFORMATIONS SYSTÈME
+- OS: Ubuntu 16.04 (Linux 4.4.0-210-generic)
+- Serveur web: Apache2
+- PHP: 7.0 avec PHP-FPM
+- Architecture: x86_64
+- Uptime: 8h27 au moment du test
+
+## 5. VULNÉRABILITÉS IDENTIFIÉES
+1. Weak Authentication (mot de passe faible)
+2. Command Injection (pas de validation des entrées)
+3. Information Disclosure (flags dans le code source)
+
+## 6. RECOMMANDATIONS
+1. Implémenter une authentification forte
+2. Valider et échapper toutes les entrées utilisateur
+3. Utiliser des comptes de service avec permissions minimales
+4. Implémenter des mécanismes de détection d'intrusion
+
+## 7. SCRIPTS UTILISÉS
+- password_cracker_mein.py: Crack du mot de passe
+- command_injection_simple.py: Test d'injection de commandes
+- count_passwd_lines.py: Comptage des lignes /etc/passwd
+- find_flag.py: Recherche de flags
+
+## 8. RÉSULTATS FINAUX
+✅ Connexion réussie avec admin/canyouletmein
+✅ Injection de commandes fonctionnelle
+✅ Flag SC01{Retour_aux_sources} découvert
+✅ 30 lignes dans /etc/passwd confirmées
+
+Session terminée avec succès.
