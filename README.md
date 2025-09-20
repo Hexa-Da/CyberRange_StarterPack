@@ -24,12 +24,6 @@ Cette session de pentesting a été réalisée sur le site DVWS (Damn Vulnerable
 - **Méthode** : Injection de commandes pour lire le fichier source
 - **Script** : `find_flag.py`
 
-### 4. **Analyse des Permissions**
-- **Utilisateur** : `www-data` (UID: 33)
-- **Permissions** : Limitées aux fichiers web uniquement
-- **Accès sudo** : Aucun
-- **Scripts** : `check_permissions.py`, `simple_reverse_shell.py`, `netcat_reverse_shell.py`
-
 ## 📁 Structure du Projet
 
 ```
@@ -38,7 +32,7 @@ CyberRange_StarterPack/
 │   ├── password_cracker_mein.py
 │   ├── command_injection_simple.py
 │   ├── count_passwd_lines.py
-│   └──find_flag.py
+│   └── find_flag.py
 ├── results/                   # Résultats et captures
 ├── docs/                      # Documentation
 └── README.md                  # Ce fichier
