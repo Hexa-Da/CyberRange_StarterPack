@@ -1,2 +1,4 @@
 rockyou.txt
 .DS_Store
+.idea/
+.venv/
